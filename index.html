@@ -5,8 +5,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/three/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/gyroscope-plugin/index.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/equirectangular-video-adapter/index.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/gyroscope-plugin/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/video-plugin/index.min.js"></script>
+
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
 </head>
 
 
@@ -16,7 +26,14 @@
 <script>
     const viewer = new PhotoSphereViewer.Viewer({
         container: document.querySelector('#viewer'),
-        panorama: 'https://photo-sphere-viewer-data.netlify.app/assets/sphere.jpg',
-        plugins: [PhotoSphereViewer.GyroscopePlugin],
+        // navbar: false,
+        // panorama: '/251.png',
+        adapter: [PhotoSphereViewer.EquirectangularVideoAdapter, { autoplay : true }],
+        panorama: { source: '/final_x264.mp4'},
+        // panorama: 'https://photo-sphere-viewer-data.netlify.app/assets/sphere.jpg',
+        plugins: [
+            PhotoSphereViewer.GyroscopePlugin, 
+            PhotoSphereViewer.VideoPlugin
+        ],
     });
 </script>
